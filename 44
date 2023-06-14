@@ -1,0 +1,29 @@
+            'https://dorc.ks3-cn-beijing.ksyun.com/data-set/2020Objects365%E6%95%B0%E6%8D%AE%E9%9B%86/val/images/v1/',  # noqa
+            # validation url root_2
+            'https://dorc.ks3-cn-beijing.ksyun.com/data-set/2020Objects365%E6%95%B0%E6%8D%AE%E9%9B%86/val/images/v2/'  # noqa
+        ])
+    url = data2url.get(args.dataset_name, None)
+    if url is None:
+        print('Only support COCO, VOC, and LVIS now!')
+        print('Only support COCO, VOC, LVIS, and Objects365v2 now!')
+        return
+    download(
+        url,
+        dir=path,
+        unzip=args.unzip,
+        delete=args.delete,
+        threads=args.threads)
+    if args.dataset_name == 'objects365v2':
+        download_objects365v2(
+            url,
+            dir=path,
+            unzip=args.unzip,
+            delete=args.delete,
+            threads=args.threads)
+    else:
+        download(
+            url,
+            dir=path,
+            unzip=args.unzip,
+            delete=args.delete,
+            threads=args.threads)
